@@ -1,0 +1,202 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"><title>HTML/CSS网页兼容性处理 | 𝖂𝖊𝖑𝖈𝖔𝖒𝖊 𝖙𝖔 𝕵𝖔𝖋𝖜𝖆𝖗𝖊𝖓'𝖘 𝖇𝖑𝖔𝖌</title><meta name="author" content="Jofwaren"><meta name="copyright" content="Jofwaren"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="HTML 与 CSS 常见的兼容性与响应式适配处理要点，包含继承规则、网页安全字体、媒体查询与图像适配示例。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTML&#x2F;CSS网页兼容性处理">
+<meta property="og:url" content="https://jofwarm.github.io/2025/09/23/CSS%E7%BD%91%E9%A1%B5%E5%85%BC%E5%AE%B9%E6%80%A7%E5%A4%84%E7%90%86/index.html">
+<meta property="og:site_name" content="𝖂𝖊𝖑𝖈𝖔𝖒𝖊 𝖙𝖔 𝕵𝖔𝖋𝖜𝖆𝖗𝖊𝖓&#39;𝖘 𝖇𝖑𝖔𝖌">
+<meta property="og:description" content="HTML 与 CSS 常见的兼容性与响应式适配处理要点，包含继承规则、网页安全字体、媒体查询与图像适配示例。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://jofwarm.github.io/img/txttop7.jpg">
+<meta property="article:published_time" content="2025-09-23T12:00:00.000Z">
+<meta property="article:modified_time" content="2025-09-23T12:59:45.455Z">
+<meta property="article:author" content="Jofwaren">
+<meta property="article:tag" content="CSS">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://jofwarm.github.io/img/txttop7.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://jofwarm.github.io/2025/09/23/CSS%E7%BD%91%E9%A1%B5%E5%85%BC%E5%AE%B9%E6%80%A7%E5%A4%84%E7%90%86/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'HTML/CSS网页兼容性处理',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-09-23 20:59:45'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/touxiang.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">7</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">12</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/txttop7.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="𝖂𝖊𝖑𝖈𝖔𝖒𝖊 𝖙𝖔 𝕵𝖔𝖋𝖜𝖆𝖗𝖊𝖓'𝖘 𝖇𝖑𝖔𝖌"></a></span><div id="menus"><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">HTML/CSS网页兼容性处理</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-09-23T12:00:00.000Z" title="发表于 2025-09-23 20:00:00">2025-09-23</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-09-23T12:59:45.455Z" title="更新于 2025-09-23 20:59:45">2025-09-23</time></span></div><div class="meta-secondline"></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="HTML-x2F-CSS-网页兼容性处理"><a href="#HTML-x2F-CSS-网页兼容性处理" class="headerlink" title="HTML&#x2F;CSS 网页兼容性处理"></a>HTML&#x2F;CSS 网页兼容性处理</h1><h2 id="1-CSS-元素继承属性处理"><a href="#1-CSS-元素继承属性处理" class="headerlink" title="1. CSS 元素继承属性处理"></a>1. CSS 元素继承属性处理</h2><ul>
+<li><strong>继承属性未指定时</strong>：取父元素的值；若无父元素，则取根元素（<code>html</code>）的默认值或浏览器内置样式。</li>
+<li><strong>非继承属性未指定时</strong>：取该属性的初始值（initial value，浏览器默认值）。</li>
+</ul>
+<blockquote>
+<p>说明：某些常见的继承属性包括 <code>color</code>、<code>font-family</code>、<code>line-height</code> 等；布局相关的大多数属性（如 <code>margin</code>、<code>padding</code>、<code>width</code>）为非继承属性。</p>
+</blockquote>
+<h2 id="2-CSS-字体支持（网页安全字体）"><a href="#2-CSS-字体支持（网页安全字体）" class="headerlink" title="2. CSS 字体支持（网页安全字体）"></a>2. CSS 字体支持（网页安全字体）</h2><p>为了兼容不同平台与浏览器，通常提供字体备选列表：</p>
+<p>示例：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">  <span class="attribute">font-family</span>: <span class="string">&quot;Arial&quot;</span>, <span class="string">&quot;Helvetica&quot;</span>, <span class="string">&quot;PingFang SC&quot;</span>, <span class="string">&quot;Hiragino Sans GB&quot;</span>, <span class="string">&quot;Microsoft Yahei&quot;</span>, <span class="string">&quot;WenQuanYi Micro Hei&quot;</span>, sans-serif;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>常见网页安全字体（示例）：<code>Arial</code>。</li>
+<li>各平台支持率可能不同，例如 Windows &#x2F; macOS 对同一字体的内置支持率存在差异，因此建议列出多个候选字体并以通用字体族（如 <code>sans-serif</code>）作为兜底。</li>
+</ul>
+<h2 id="3-CSS-网页屏幕适配（响应式）"><a href="#3-CSS-网页屏幕适配（响应式）" class="headerlink" title="3. CSS 网页屏幕适配（响应式）"></a>3. CSS 网页屏幕适配（响应式）</h2><p>使用 <code>@media</code> 规则为不同视口定义样式：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 针对最大宽度为 768px 的视口 */</span></span><br><span class="line"><span class="keyword">@media</span> (<span class="attribute">max-width</span>: <span class="number">768px</span>) &#123;</span><br><span class="line">  <span class="selector-class">.container</span> &#123;</span><br><span class="line">    <span class="attribute">padding</span>: <span class="number">12px</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/* 使用 display 控制某些元素随窗口隐藏 */</span></span><br><span class="line">  <span class="selector-class">.hero-image</span> &#123;</span><br><span class="line">    <span class="attribute">display</span>: none; <span class="comment">/* 移动端隐藏大图 */</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/* 表单在窄屏时垂直布局 */</span></span><br><span class="line">  <span class="selector-class">.form</span> &#123;</span><br><span class="line">    <span class="attribute">display</span>: flex;</span><br><span class="line">    <span class="attribute">flex-direction</span>: column; <span class="comment">/* 垂直排列 */</span></span><br><span class="line">    <span class="attribute">align-items</span>: center;    <span class="comment">/* 居中对齐 */</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/* 换行布局 */</span></span><br><span class="line">  <span class="selector-class">.row</span> &#123;</span><br><span class="line">    <span class="attribute">display</span>: flex;</span><br><span class="line">    <span class="attribute">flex-wrap</span>: wrap; <span class="comment">/* 允许换行 */</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="selector-class">.col-full</span> &#123;</span><br><span class="line">    <span class="attribute">flex</span>: <span class="number">0</span> <span class="number">0</span> <span class="number">100%</span>; <span class="comment">/* 占据整行 */</span></span><br><span class="line">    <span class="attribute">box-sizing</span>: border-box;</span><br><span class="line">    <span class="attribute">padding</span>: <span class="number">8px</span>; <span class="comment">/* 示例 padding */</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>display</code> 可以用来在不同屏幕宽度下隐藏或显示元素。</li>
+<li>确定“最大（或最小）属性值”时，需根据设计稿及内容可用性做取舍（例如 <code>max-width</code>、<code>min-width</code> 的设置）。</li>
+</ul>
+<h2 id="4-图像适配"><a href="#4-图像适配" class="headerlink" title="4. 图像适配"></a>4. 图像适配</h2><p>推荐使用相对尺寸与最大&#x2F;最小约束，保证图像随视口缩放且不过度超出容器：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">img</span><span class="selector-class">.responsive</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100%</span>;      <span class="comment">/* 在容器中自适应宽度 */</span></span><br><span class="line">  <span class="attribute">max-width</span>: <span class="number">600px</span>; <span class="comment">/* 设定最大宽度，防止在大屏上过大 */</span></span><br><span class="line">  <span class="attribute">height</span>: auto;     <span class="comment">/* 保持纵横比 */</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 或者按百分比布局 */</span></span><br><span class="line"><span class="selector-class">.img-25</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">25%</span>;</span><br><span class="line">  <span class="attribute">max-width</span>: <span class="number">200px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>常用属性：</p>
+<ul>
+<li><code>max-width</code>：限制元素不能超过的宽度。</li>
+<li><code>min-width</code>：限制元素最小宽度。</li>
+<li><code>width</code>：可使用百分比（如 <code>25%</code>）或具体像素。</li>
+</ul>
+<h2 id="5-其他建议与兼容性小贴士"><a href="#5-其他建议与兼容性小贴士" class="headerlink" title="5. 其他建议与兼容性小贴士"></a>5. 其他建议与兼容性小贴士</h2><ul>
+<li>使用 <code>box-sizing: border-box;</code> 可以减少因 padding&#x2F;margin 导致的布局差异。</li>
+<li>使用前缀或自动化工具（如 PostCSS、Autoprefixer）处理需要供应商前缀的 CSS 特性（兼容旧版浏览器）。</li>
+<li>优先采用流式布局（Flexbox &#x2F; Grid）并在必要时通过媒体查询做断点适配。</li>
+<li>对于关键 UI 元素，测试不同操作系统与主流浏览器（Chrome、Edge、Safari、Firefox）以发现差异。</li>
+</ul>
+<hr>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="JofWaren">JofWaren</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a target="_blank" rel="noopener" href="https://github.com/JofWarm/JF-cli">https://github.com/JofWarm/JF-cli</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">此文章版权归JofWaren所有</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/CSS/">CSS</a></div><div class="post_share"><div class="social-share" data-image="/img/txttop7.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2025/08/06/JF-Cli%E9%97%AE%E9%A2%98%E4%B8%8E%E8%A7%A3%E5%86%B3/" title="JF CLI 脚手架问题与解决总结"><img class="cover" src="/img/txttop6.jpg" onerror="onerror=null;src='/img/404.png'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">JF CLI 脚手架问题与解决总结</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/touxiang.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Jofwaren</div><div class="author-info__description">床不会背叛你，被子也不会</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">7</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">12</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" href="https://jofwarm.github.io/"><i class="fas fa-blog"></i><span>这个人懒懒的</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://space.bilibili.com/454112419" target="_blank" title="Bilibili"><i class="fas fa-laptop"></i></a><a class="social-icon" href="mailto:1716538947@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎欢迎，这边请o(*￣▽￣*)ブ</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#HTML-x2F-CSS-%E7%BD%91%E9%A1%B5%E5%85%BC%E5%AE%B9%E6%80%A7%E5%A4%84%E7%90%86"><span class="toc-number">1.</span> <span class="toc-text">HTML&#x2F;CSS 网页兼容性处理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-CSS-%E5%85%83%E7%B4%A0%E7%BB%A7%E6%89%BF%E5%B1%9E%E6%80%A7%E5%A4%84%E7%90%86"><span class="toc-number">1.1.</span> <span class="toc-text">1. CSS 元素继承属性处理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-CSS-%E5%AD%97%E4%BD%93%E6%94%AF%E6%8C%81%EF%BC%88%E7%BD%91%E9%A1%B5%E5%AE%89%E5%85%A8%E5%AD%97%E4%BD%93%EF%BC%89"><span class="toc-number">1.2.</span> <span class="toc-text">2. CSS 字体支持（网页安全字体）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-CSS-%E7%BD%91%E9%A1%B5%E5%B1%8F%E5%B9%95%E9%80%82%E9%85%8D%EF%BC%88%E5%93%8D%E5%BA%94%E5%BC%8F%EF%BC%89"><span class="toc-number">1.3.</span> <span class="toc-text">3. CSS 网页屏幕适配（响应式）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E5%9B%BE%E5%83%8F%E9%80%82%E9%85%8D"><span class="toc-number">1.4.</span> <span class="toc-text">4. 图像适配</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E5%85%B6%E4%BB%96%E5%BB%BA%E8%AE%AE%E4%B8%8E%E5%85%BC%E5%AE%B9%E6%80%A7%E5%B0%8F%E8%B4%B4%E5%A3%AB"><span class="toc-number">1.5.</span> <span class="toc-text">5. 其他建议与兼容性小贴士</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/09/23/CSS%E7%BD%91%E9%A1%B5%E5%85%BC%E5%AE%B9%E6%80%A7%E5%A4%84%E7%90%86/" title="HTML/CSS网页兼容性处理"><img src="/img/txttop7.jpg" onerror="this.onerror=null;this.src='/img/404.png'" alt="HTML/CSS网页兼容性处理"/></a><div class="content"><a class="title" href="/2025/09/23/CSS%E7%BD%91%E9%A1%B5%E5%85%BC%E5%AE%B9%E6%80%A7%E5%A4%84%E7%90%86/" title="HTML/CSS网页兼容性处理">HTML/CSS网页兼容性处理</a><time datetime="2025-09-23T12:00:00.000Z" title="发表于 2025-09-23 20:00:00">2025-09-23</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/08/06/JF-Cli%E9%97%AE%E9%A2%98%E4%B8%8E%E8%A7%A3%E5%86%B3/" title="JF CLI 脚手架问题与解决总结"><img src="/img/txttop6.jpg" onerror="this.onerror=null;this.src='/img/404.png'" alt="JF CLI 脚手架问题与解决总结"/></a><div class="content"><a class="title" href="/2025/08/06/JF-Cli%E9%97%AE%E9%A2%98%E4%B8%8E%E8%A7%A3%E5%86%B3/" title="JF CLI 脚手架问题与解决总结">JF CLI 脚手架问题与解决总结</a><time datetime="2025-08-06T07:30:00.000Z" title="发表于 2025-08-06 15:30:00">2025-08-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/05/28/Jenkins%20%E9%85%8D%E7%BD%AE%20Gitee%20%E8%87%AA%E5%8A%A8%E6%9E%84%E5%BB%BA%E6%B5%81%E7%A8%8B%E8%AE%B0%E5%BD%95/" title="Jenkins 配置 Gitee 自动构建流程记录"><img src="/img/txttop5.png" onerror="this.onerror=null;this.src='/img/404.png'" alt="Jenkins 配置 Gitee 自动构建流程记录"/></a><div class="content"><a class="title" href="/2025/05/28/Jenkins%20%E9%85%8D%E7%BD%AE%20Gitee%20%E8%87%AA%E5%8A%A8%E6%9E%84%E5%BB%BA%E6%B5%81%E7%A8%8B%E8%AE%B0%E5%BD%95/" title="Jenkins 配置 Gitee 自动构建流程记录">Jenkins 配置 Gitee 自动构建流程记录</a><time datetime="2025-05-28T12:00:00.000Z" title="发表于 2025-05-28 20:00:00">2025-05-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/04/12/%E5%89%8D%E7%AB%AF%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2%E5%88%B0%E9%98%BF%E9%87%8C%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%85%A8%E8%BF%87%E7%A8%8B/" title="前端项目部署到阿里云服务器全过程"><img src="/img/txttop4.jpg" onerror="this.onerror=null;this.src='/img/404.png'" alt="前端项目部署到阿里云服务器全过程"/></a><div class="content"><a class="title" href="/2025/04/12/%E5%89%8D%E7%AB%AF%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2%E5%88%B0%E9%98%BF%E9%87%8C%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%85%A8%E8%BF%87%E7%A8%8B/" title="前端项目部署到阿里云服务器全过程">前端项目部署到阿里云服务器全过程</a><time datetime="2025-04-12T06:00:00.000Z" title="发表于 2025-04-12 14:00:00">2025-04-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/04/02/Jenkins%E9%85%8D%E7%BD%AE%E8%BF%87%E7%A8%8B%E4%BB%A5%E5%8F%8A%E9%81%87%E5%88%B0%E5%92%8C%E8%A7%A3%E5%86%B3%E7%9A%84%E9%97%AE%E9%A2%98/" title="项目前后端在Jenkins中的部署"><img src="/img/txttop2.png" onerror="this.onerror=null;this.src='/img/404.png'" alt="项目前后端在Jenkins中的部署"/></a><div class="content"><a class="title" href="/2025/04/02/Jenkins%E9%85%8D%E7%BD%AE%E8%BF%87%E7%A8%8B%E4%BB%A5%E5%8F%8A%E9%81%87%E5%88%B0%E5%92%8C%E8%A7%A3%E5%86%B3%E7%9A%84%E9%97%AE%E9%A2%98/" title="项目前后端在Jenkins中的部署">项目前后端在Jenkins中的部署</a><time datetime="2025-04-02T07:00:00.000Z" title="发表于 2025-04-02 15:00:00">2025-04-02</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2025 By Jofwaren</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"></div><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-show-text.min.js" data-mobile="false" data-text="hey,今天过得好嘛,有什么好玩的嘛,:),嘿嘿,哈欠~,困=.=,不如去睡觉吧~,好吧好吧,Have a nice day~,好大的太阳,出去走走" data-fontsize="15px" data-random="false" async="async"></script></div></body></html>
