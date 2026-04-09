@@ -1,0 +1,299 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"><title>毕设模块化与组件化实现说明 | 𝖂𝖊𝖑𝖈𝖔𝖒𝖊 𝖙𝖔 𝕵𝖔𝖋𝖜𝖆𝖗𝖊𝖓'𝖘 𝖇𝖑𝖔𝖌</title><meta name="author" content="Jofwaren"><meta name="copyright" content="Jofwaren"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="解释毕设项目如何在代码层面实现模块化与组件化开发的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="毕设模块化与组件化实现说明">
+<meta property="og:url" content="https://jofwarm.github.io/2026/03/23/%E6%AF%95%E8%AE%BE-%E7%B3%BB%E7%BB%9F%E9%AA%8C%E6%94%B6%E8%AE%B2%E7%A8%BF-%E5%B7%A5%E7%A8%8B%E5%8C%96%E4%B8%8E%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/index.html">
+<meta property="og:site_name" content="𝖂𝖊𝖑𝖈𝖔𝖒𝖊 𝖙𝖔 𝕵𝖔𝖋𝖜𝖆𝖗𝖊𝖓&#39;𝖘 𝖇𝖑𝖔𝖌">
+<meta property="og:description" content="解释毕设项目如何在代码层面实现模块化与组件化开发的">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://jofwarm.github.io/img/top/txttop13.png">
+<meta property="article:published_time" content="2026-03-23T07:09:00.000Z">
+<meta property="article:modified_time" content="2026-04-09T09:20:43.352Z">
+<meta property="article:author" content="Jofwaren">
+<meta property="article:tag" content="CBD">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://jofwarm.github.io/img/top/txttop13.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://jofwarm.github.io/2026/03/23/%E6%AF%95%E8%AE%BE-%E7%B3%BB%E7%BB%9F%E9%AA%8C%E6%94%B6%E8%AE%B2%E7%A8%BF-%E5%B7%A5%E7%A8%8B%E5%8C%96%E4%B8%8E%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '毕设模块化与组件化实现说明',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2026-04-09 17:20:43'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/font.css"><meta name="generator" content="Hexo 6.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/touxiang1.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">14</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">20</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/top/txttop13.png')"><nav id="nav"><span id="blog-info"><a href="/" title="𝖂𝖊𝖑𝖈𝖔𝖒𝖊 𝖙𝖔 𝕵𝖔𝖋𝖜𝖆𝖗𝖊𝖓'𝖘 𝖇𝖑𝖔𝖌"></a></span><div id="menus"><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">毕设模块化与组件化实现说明</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-03-23T07:09:00.000Z" title="发表于 2026-03-23 15:09:00">2026-03-23</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-04-09T09:20:43.352Z" title="更新于 2026-04-09 17:20:43">2026-04-09</time></span></div><div class="meta-secondline"></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="系统验收汇报讲稿：前端工程化与性能优化"><a href="#系统验收汇报讲稿：前端工程化与性能优化" class="headerlink" title="系统验收汇报讲稿：前端工程化与性能优化"></a>系统验收汇报讲稿：前端工程化与性能优化</h1><blockquote>
+<p><strong>用途</strong>：答辩&#x2F;验收时口头汇报，可按时间删减。<br><strong>工程</strong>：<code>discountmall-vue3-CBD</code> &#x2F; <code>discountmall-vue3-CBD-UP</code>（移动端）、<code>discountmall-web-CBD</code> &#x2F; <code>discountmall-web-CBD-UP</code>（桌面端）；后端 Spring Boot 与前端通过 <code>/wx</code> 代理联调。<br><strong>详细代码对比</strong>：见 <code>Vue3-CBD-UP-优化代码前后对比.md</code>、<code>毕设-系统验收演讲稿-优化对比版.md</code>。</p>
+</blockquote>
+<hr>
+<h2 id="一、开场（约-1-分钟）"><a href="#一、开场（约-1-分钟）" class="headerlink" title="一、开场（约 1 分钟）"></a>一、开场（约 1 分钟）</h2><p>各位老师好。我本次毕设的前端部分，围绕<strong>小商城用户端</strong>展开：在 <strong>Vue 3 + Vite</strong> 技术栈上完成业务功能，并在此基础上做了<strong>工程化组织</strong>与<strong>性能及稳定性优化</strong>。  </p>
+<p>移动端采用 <strong>Vant</strong>，桌面 Web 端采用 <strong>Element Plus</strong>，接口层统一使用 <strong>axios</strong>；优化前、优化后分别以 <strong><code>*-CBD</code></strong> 与 <strong><code>*-CBD-UP</code></strong> 两套工程对照，便于说明改动了什么、解决了什么问题。  </p>
+<p>下面我从<strong>工程化开发</strong>和<strong>性能优化</strong>两部分汇报。</p>
+<hr>
+<h2 id="二、前端工程化开发（约-3～4-分钟）"><a href="#二、前端工程化开发（约-3～4-分钟）" class="headerlink" title="二、前端工程化开发（约 3～4 分钟）"></a>二、前端工程化开发（约 3～4 分钟）</h2><h3 id="2-1-为什么采用-Vue-3-Vite"><a href="#2-1-为什么采用-Vue-3-Vite" class="headerlink" title="2.1 为什么采用 Vue 3 + Vite"></a>2.1 为什么采用 Vue 3 + Vite</h3><ul>
+<li><strong>Vue 3</strong>：组合式 API 便于把「请求、状态、生命周期」集中在一处书写，页面复杂时比选项式更易维护。  </li>
+<li><strong>Vite</strong>：开发阶段冷启动快、按需编译；生产构建基于 Rollup，适合现代 ES 模块，和 Vue 3 生态匹配度高。</li>
+</ul>
+<h3 id="2-2-工程目录与职责划分"><a href="#2-2-工程目录与职责划分" class="headerlink" title="2.2 工程目录与职责划分"></a>2.2 工程目录与职责划分</h3><p>典型结构包括：</p>
+<ul>
+<li>**<code>src/views</code>**：按业务拆页面（首页、分类、搜索、详情、用户等），路由与文件夹对应，便于定位。  </li>
+<li>**<code>src/router</code>**：路由表集中配置；配合 <strong><code>() =&gt; import()</code></strong> 做路由级懒加载（见下一节性能部分）。  </li>
+<li>**<code>src/api</code>**：把接口路径、方法封装成函数，页面只调 <code>getHome</code>、<code>goodsDetail</code> 等，避免 URL 散落在各组件。  </li>
+<li><strong><code>src/utils</code><strong>：如 <strong><code>request.js</code></strong> 封装 axios 实例、拦截器、统一错误与 Token，属于</strong>横切关注点</strong>，业务代码不重复写鉴权与 baseURL。  </li>
+<li>**<code>src/stores</code>**（Pinia）：跨页面共享状态（如应用级配置），与组件内 <code>ref</code> 本地状态区分使用场景。  </li>
+<li><strong><code>vite.config.js</code><strong>：<code>@</code> 路径别名、<code>scss</code> 全局变量注入、</strong>开发代理</strong> <code>/wx</code> → 后端，实现<strong>前后端端口分离</strong>下的本地联调。</li>
+</ul>
+<p>这样划分后，<strong>改接口只动 api&#x2F;utils，改页面只动 views，改构建只动 Vite 配置</strong>，符合工程化「高内聚、低耦合」的目标。</p>
+<h3 id="2-3-标准化脚本与交付形态"><a href="#2-3-标准化脚本与交付形态" class="headerlink" title="2.3 标准化脚本与交付形态"></a>2.3 标准化脚本与交付形态</h3><p>各前端工程 <code>package.json</code> 中统一提供：</p>
+<ul>
+<li>**<code>npm run dev</code>**：本地开发，热更新。  </li>
+<li>**<code>npm run build</code>**：生产构建，产出 <code>dist</code>，用于静态部署或验收时展示「上线形态」。  </li>
+<li>**<code>npm run preview</code>**：预览构建结果（Vue3-UP 中 <code>preview</code> 与 <code>dev</code> 共用代理配置，避免预览与开发行为不一致）。</li>
+</ul>
+<p>依赖通过 <strong><code>package.json</code> &#x2F; lock 文件</strong>锁定版本，保证多人或换机器可复现构建。</p>
+<h3 id="2-4-联调与部署层面的工程化"><a href="#2-4-联调与部署层面的工程化" class="headerlink" title="2.4 联调与部署层面的工程化"></a>2.4 联调与部署层面的工程化</h3><ul>
+<li>浏览器只访问前端端口（如 <strong>6256</strong>），接口统一走相对路径 **<code>/wx/...</code>**，由 Vite 代理到后端（如 <strong>9090</strong>），避免写死后端地址、也方便切换环境。  </li>
+<li>Token 等在 <strong><code>request</code> 拦截器</strong>统一注入，减少漏带凭证导致的偶发错误。</li>
+</ul>
+<p><strong>小结（可背诵一句）</strong>：工程化体现在 <strong>「目录职责清晰 + 构建脚本统一 + 请求与路由集中封装 + 代理解耦后端」</strong>。</p>
+<hr>
+<h2 id="三、性能与稳定性优化（约-4～5-分钟）"><a href="#三、性能与稳定性优化（约-4～5-分钟）" class="headerlink" title="三、性能与稳定性优化（约 4～5 分钟）"></a>三、性能与稳定性优化（约 4～5 分钟）</h2><p>优化目标可以概括为：<strong>减轻首屏与重复请求压力、降低高并发与弱网下的错误与乱序、改善用户可感知的加载体验</strong>。下面按层次说明「做了什么、为什么有效」。</p>
+<h3 id="3-1-加载路径：路由懒加载与页面缓存"><a href="#3-1-加载路径：路由懒加载与页面缓存" class="headerlink" title="3.1 加载路径：路由懒加载与页面缓存"></a>3.1 加载路径：路由懒加载与页面缓存</h3><ul>
+<li><strong>路由懒加载</strong>：使用 <strong><code>component: () =&gt; import(&#39;@/views/...&#39;)</code><strong>，按路由拆 chunk，首屏不必下载全部页面脚本，有利于</strong>首包体积</strong>与<strong>首次可交互时间</strong>。  </li>
+<li>**<code>&lt;keep-alive&gt;</code> + <code>meta.keepAlive</code>**（移动端 <code>App.vue</code>）：Tab 类页面切换时减少重复挂载，配合后续「离页取消请求」，避免无意义的重复请求与闪烁。</li>
+</ul>
+<h3 id="3-2-请求层（axios）：稳链路、少误判、可控重试"><a href="#3-2-请求层（axios）：稳链路、少误判、可控重试" class="headerlink" title="3.2 请求层（axios）：稳链路、少误判、可控重试"></a>3.2 请求层（axios）：稳链路、少误判、可控重试</h3><p>文件：**<code>src/utils/request.js</code>**（Vue3-UP &#x2F; Web-UP 策略略有不同，答辩时可说明「两端场景不同」）。</p>
+<ul>
+<li><strong>超时调整</strong>：适当放宽客户端 timeout，减少「后端仍在处理、客户端先断开」的误判。  </li>
+<li><strong>业务码 501（未登录）节流</strong>：短时间窗口内多次 501 只处理一次跳转&#x2F;提示，避免并发请求触发<strong>重复 Toast 与重复跳转</strong>。  </li>
+<li><strong>网络错误分级提示</strong>：区分超时、无响应（多为断网）、5xx、404 等，替代「一律连接超时」，利于用户理解与问题定位。  </li>
+<li><strong>GET 有限重试</strong>：  <ul>
+<li>Vue3-UP：<strong>仅 HTTP 502&#x2F;503</strong> 时最多补一次，并带短随机延迟，避免压测或故障时<strong>重试风暴</strong>。  </li>
+<li>Web-UP：侧重<strong>超时&#x2F;无响应</strong>类 GET 的有限重试；写操作（加购、下单）不自动重试。</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-3-API-层：短-TTL-缓存与并发去重（削峰）"><a href="#3-3-API-层：短-TTL-缓存与并发去重（削峰）" class="headerlink" title="3.3 API 层：短 TTL 缓存与并发去重（削峰）"></a>3.3 API 层：短 TTL 缓存与并发去重（削峰）</h3><p>文件：**<code>src/api/api.js</code>**（主要在 Vue3-UP）。</p>
+<ul>
+<li><strong>首页 <code>getHome</code><strong>：内存 <strong>TTL</strong>（如约 20 秒）+ <strong>in-flight Promise 复用</strong>：短时间重复进入首页或并发触发时，不重复打聚合接口，</strong>削峰</strong>。  </li>
+<li><strong>商品详情、品牌列表&#x2F;详情等</strong>：<code>Map</code> 按 id 或参数 key 缓存 + <strong>pending 去重</strong>，同一 key 并发只发一次 HTTP。  </li>
+<li>支持 **<code>skipCache</code><strong>、</strong><code>signal</code>**：手动重试&#x2F;强制刷新与取消请求时行为正确，避免脏缓存。</li>
+</ul>
+<h3 id="3-4-页面层：取消竞态、防连点、可感知性能"><a href="#3-4-页面层：取消竞态、防连点、可感知性能" class="headerlink" title="3.4 页面层：取消竞态、防连点、可感知性能"></a>3.4 页面层：取消竞态、防连点、可感知性能</h3><ul>
+<li><strong><code>AbortController</code><strong>：首页、详情、搜索等场景，在 <strong>组件卸载、路由参数变化、搜索词变化</strong>时 <code>abort</code>，避免旧请求晚到</strong>覆盖新数据</strong>（典型竞态问题）。  </li>
+<li><strong>骨架屏（Vant Skeleton）</strong>：<code>main.js</code> 注册后，首屏先占位再填数据，提升<strong>可感知速度</strong>，减少用户因白屏反复刷新。  </li>
+<li><strong>失败态与重试入口</strong>：如首页统一 <code>loadHome</code>，失败可点重试并 <code>skipCache</code> 拉最新。  </li>
+<li><strong>防连点（busy &#x2F; loading 锁）</strong>：加购、领券、收藏等，请求进行中禁止重复提交，降低<strong>重复写请求</strong>与后端冲突。  </li>
+<li><strong>详情页 <code>watch</code> 路由参数</strong>：同一组件实例切换商品 id 时清空旧数据并重拉，避免显示上一商品。</li>
+</ul>
+<h3 id="3-5-构建与代理层（Vue3-UP）"><a href="#3-5-构建与代理层（Vue3-UP）" class="headerlink" title="3.5 构建与代理层（Vue3-UP）"></a>3.5 构建与代理层（Vue3-UP）</h3><p>文件：**<code>vite.config.js</code>**。</p>
+<ul>
+<li>对 <code>/wx</code> 代理增加 <strong>较长超时</strong>、使用 Node <strong><code>http.Agent</code> Keep-Alive</strong> 与 <strong><code>maxSockets</code></strong> 等，减轻开发&#x2F;压测时 <strong>Vite 代理进程与后端之间</strong>频繁建连、代理过早断开的问题。  </li>
+<li><strong>说明</strong>：使用 JMeter 直连前端端口时，请求走 <strong>Node 代理链路</strong>，与浏览器内页面逻辑不同；汇报时宜区分<strong>代理层优化</strong>与<strong>浏览器内 axios&#x2F;缓存优化</strong>各自作用范围（详见 <code>vue3-CBD与CBD-UP优化对比与实现说明.md</code>）。</li>
+</ul>
+<h3 id="3-6-桌面-Web-端补充（Web-UP）"><a href="#3-6-桌面-Web-端补充（Web-UP）" class="headerlink" title="3.6 桌面 Web 端补充（Web-UP）"></a>3.6 桌面 Web 端补充（Web-UP）</h3><ul>
+<li><strong>同域请求并发上限队列</strong>：避免单页瞬间占满浏览器连接，弱网下关键请求仍有机会完成。  </li>
+<li>**路由切换 <code>refreshNavigationAbort</code>**：与 axios <code>signal</code> 结合，换页时取消未完成请求，与移动端 Abort 思路一致。</li>
+</ul>
+<p><strong>小结（可背诵一句）</strong>：性能优化是 <strong>「加载路径（懒加载&#x2F;缓存页）→ 请求与数据（削峰&#x2F;取消&#x2F;重试）→ 交互（骨架&#x2F;防连点）→ 代理与链路（Vue3-UP）」</strong> 分层推进。</p>
+<hr>
+<h2 id="四、优化前后对照与验收表述（约-1-分钟）"><a href="#四、优化前后对照与验收表述（约-1-分钟）" class="headerlink" title="四、优化前后对照与验收表述（约 1 分钟）"></a>四、优化前后对照与验收表述（约 1 分钟）</h2><ul>
+<li><strong>对照方式</strong>：同一功能在 <strong><code>*-CBD</code></strong> 与 <strong><code>*-CBD-UP</code></strong> 中对比 <code>request.js</code>、<code>api.js</code>、关键页面与 <code>vite.config.js</code> 即可说明差异。  </li>
+<li><strong>数据对比</strong>：仓库 <code>report/</code> 与 <strong><code>WEB与Vue3-report-Old-New对比汇总.md</code></strong> 中整理了 JMeter 统计；汇报时可选取 <strong>错误率、P95&#x2F;P99、吞吐</strong> 等 1～2 个指标口述，并说明测试条件（线程数、样本量、是否同一脚本）。  </li>
+<li><strong>注意</strong>：不要把「浏览器内优化」与「仅走代理的压测路径」混为一谈，老师追问时按文档中的归因回答即可。</li>
+</ul>
+<hr>
+<h2 id="五、演示说明（约-30-秒，可选）"><a href="#五、演示说明（约-30-秒，可选）" class="headerlink" title="五、演示说明（约 30 秒，可选）"></a>五、演示说明（约 30 秒，可选）</h2><p>演示顺序：<strong>先启后端 jar，再 <code>npm run dev</code> 启一个前端</strong>，浏览器访问 <strong><code>http://localhost:6256</code><strong>；四个前端</strong>端口相同，一次只开一个</strong>。具体命令见 **<code>毕设-工程启动路径与命令说明.md</code>**。</p>
+<hr>
+<h2 id="六、结束语（约-30-秒）"><a href="#六、结束语（约-30-秒）" class="headerlink" title="六、结束语（约 30 秒）"></a>六、结束语（约 30 秒）</h2><p>综上，本课题在前端侧完成了<strong>模块化工程搭建</strong>与<strong>可复现的构建流程</strong>，并针对<strong>重复请求、并发与弱网、竞态与体验</strong>做了分层优化，形成 <strong>CBD &#x2F; CBD-UP</strong> 对照，便于验收与论文撰写。以上是我的汇报，谢谢各位老师。请老师批评指正。</p>
+<hr>
+<h2 id="七、创新点（可单独汇报-1-分钟）"><a href="#七、创新点（可单独汇报-1-分钟）" class="headerlink" title="七、创新点（可单独汇报 1 分钟）"></a>七、创新点（可单独汇报 1 分钟）</h2><h3 id="7-1-本课题创新点（系统开发类口径）"><a href="#7-1-本课题创新点（系统开发类口径）" class="headerlink" title="7.1 本课题创新点（系统开发类口径）"></a>7.1 本课题创新点（系统开发类口径）</h3><ol>
+<li><p><strong>构建了可复现实验对照体系（CBD vs CBD-UP）</strong>  \n<br>不是只展示“优化后结果”，而是保留优化前后两套可运行工程，并在同脚本下进行压测对比，使优化结论具备可追溯性与可复现性。</p>
+</li>
+<li><p><strong>提出并落地请求层“稳态化策略中心”</strong>  \n<br>在 <code>request.js</code> 统一承载 Token 注入、501 节流、错误分级、有限重试与取消信号，减少页面散乱实现，提升一致性与可维护性。</p>
+</li>
+<li><p><strong>实现读多接口“短 TTL + 并发去重”的前端削峰机制</strong>  \n<br>在 <code>api.js</code> 对首页聚合与详情类接口引入缓存有效期与 in-flight Promise 复用，在不改后端协议前提下降低重复请求与瞬时压力。</p>
+</li>
+<li><p><strong>形成页面级竞态治理模式（Abort + 状态流转）</strong>  \n<br>将 <code>AbortController</code> 系统化应用于首页、搜索、详情等关键路径，避免旧请求晚到覆盖新状态，减少异步乱序引发的数据错误。</p>
+</li>
+<li><p><strong>将交互体验优化与稳定性优化协同设计</strong>  \n<br>通过 Skeleton、失败重试入口、busy&#x2F;防连点等机制，既提升可感知加载体验，也降低用户高频误操作导致的重复写请求。</p>
+</li>
+<li><p><strong>在代理链路侧进行工程级优化（Vue3-UP）</strong>  \n<br>对 <code>/wx</code> 代理增加超时与连接复用（Keep-Alive&#x2F;套接字参数），并在报告中明确其作用路径，体现从页面到链路的分层优化思路。</p>
+</li>
+</ol>
+<h3 id="7-2-一句话创新总结（答辩可直接说）"><a href="#7-2-一句话创新总结（答辩可直接说）" class="headerlink" title="7.2 一句话创新总结（答辩可直接说）"></a>7.2 一句话创新总结（答辩可直接说）</h3><p>本课题的创新不在于提出新算法，而在于构建了<strong>可复现对照 + 分层优化闭环</strong>：从工程结构、请求策略、接口削峰、页面竞态到代理链路，形成了可运行、可对比、可验证的系统开发方案。</p>
+<hr>
+<h2 id="附录：可能的追问与短答（备查）"><a href="#附录：可能的追问与短答（备查）" class="headerlink" title="附录：可能的追问与短答（备查）"></a>附录：可能的追问与短答（备查）</h2><table>
+<thead>
+<tr>
+<th>问题</th>
+<th>短答方向</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>工程化体现在哪？</td>
+<td>目录职责、api&#x2F;utils&#x2F;router 分层、Vite 脚本与代理、依赖锁定。</td>
+</tr>
+<tr>
+<td>为什么用懒加载？</td>
+<td>减首包、按路由拆 chunk。</td>
+</tr>
+<tr>
+<td>为什么缓存首页又要 TTL？</td>
+<td>削峰且控制数据新鲜度；重试可用 skipCache。</td>
+</tr>
+<tr>
+<td>为什么 GET 才自动重试？</td>
+<td>相对幂等；POST 重复可能重复下单&#x2F;加购。</td>
+</tr>
+<tr>
+<td>AbortController 解决什么？</td>
+<td>旧请求晚到导致数据错乱、离页仍更新 UI。</td>
+</tr>
+<tr>
+<td>Web 与 Vue3 重试为何不同？</td>
+<td>场景与风险不同：一个偏网关 502&#x2F;503，一个偏超时与连接。</td>
+</tr>
+</tbody></table>
+<hr>
+<p>*汇报时长建议控制在 <strong>8～12 分钟</strong>（含演示）；若限时严格，可只讲第二节小标题 + 第三节分层各举一例。*</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="JofWaren">JofWaren</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://jofwarm.github.io/">https://jofwarm.github.io/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">此文章版权归JofWaren所有</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/CBD/">CBD</a></div><div class="post_share"><div class="social-share" data-image="/img/top/txttop13.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2026/03/23/%E6%AF%95%E8%AE%BE%E6%A8%A1%E5%9D%97%E5%8C%96%E4%B8%8E%E7%BB%84%E4%BB%B6%E5%8C%96%E5%AE%9E%E7%8E%B0%E8%AF%B4%E6%98%8E/" title="毕设模块化与组件化实现说明"><img class="cover" src="/img/top/txttop13.png" onerror="onerror=null;src='/img/404.png'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">毕设模块化与组件化实现说明</div></div></a></div><div class="next-post pull-right"><a href="/2026/03/02/%E5%AE%9E%E4%B9%A0%E6%97%A5%E5%BF%97/" title="实习了bro"><img class="cover" src="/img/top/txttop11.jpg" onerror="onerror=null;src='/img/404.png'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">实习了bro</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2026/03/23/%E6%AF%95%E8%AE%BE%E6%A8%A1%E5%9D%97%E5%8C%96%E4%B8%8E%E7%BB%84%E4%BB%B6%E5%8C%96%E5%AE%9E%E7%8E%B0%E8%AF%B4%E6%98%8E/" title="毕设模块化与组件化实现说明"><img class="cover" src="/img/top/txttop13.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2026-03-23</div><div class="title">毕设模块化与组件化实现说明</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/touxiang1.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Jofwaren</div><div class="author-info__description">床不会背叛你，被子也不会</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">14</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">20</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" href="https://jofwarm.github.io/"><i class="fas fa-blog"></i><span>这个人懒懒的</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://space.bilibili.com/454112419" target="_blank" title="Bilibili"><i class="fas fa-laptop"></i></a><a class="social-icon" href="mailto:1716538947@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎欢迎，这边请o(*￣▽￣*)ブ</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E9%AA%8C%E6%94%B6%E6%B1%87%E6%8A%A5%E8%AE%B2%E7%A8%BF%EF%BC%9A%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96%E4%B8%8E%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96"><span class="toc-number">1.</span> <span class="toc-text">系统验收汇报讲稿：前端工程化与性能优化</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%BC%80%E5%9C%BA%EF%BC%88%E7%BA%A6-1-%E5%88%86%E9%92%9F%EF%BC%89"><span class="toc-number">1.1.</span> <span class="toc-text">一、开场（约 1 分钟）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96%E5%BC%80%E5%8F%91%EF%BC%88%E7%BA%A6-3%EF%BD%9E4-%E5%88%86%E9%92%9F%EF%BC%89"><span class="toc-number">1.2.</span> <span class="toc-text">二、前端工程化开发（约 3～4 分钟）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E4%B8%BA%E4%BB%80%E4%B9%88%E9%87%87%E7%94%A8-Vue-3-Vite"><span class="toc-number">1.2.1.</span> <span class="toc-text">2.1 为什么采用 Vue 3 + Vite</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E5%B7%A5%E7%A8%8B%E7%9B%AE%E5%BD%95%E4%B8%8E%E8%81%8C%E8%B4%A3%E5%88%92%E5%88%86"><span class="toc-number">1.2.2.</span> <span class="toc-text">2.2 工程目录与职责划分</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-%E6%A0%87%E5%87%86%E5%8C%96%E8%84%9A%E6%9C%AC%E4%B8%8E%E4%BA%A4%E4%BB%98%E5%BD%A2%E6%80%81"><span class="toc-number">1.2.3.</span> <span class="toc-text">2.3 标准化脚本与交付形态</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-%E8%81%94%E8%B0%83%E4%B8%8E%E9%83%A8%E7%BD%B2%E5%B1%82%E9%9D%A2%E7%9A%84%E5%B7%A5%E7%A8%8B%E5%8C%96"><span class="toc-number">1.2.4.</span> <span class="toc-text">2.4 联调与部署层面的工程化</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E6%80%A7%E8%83%BD%E4%B8%8E%E7%A8%B3%E5%AE%9A%E6%80%A7%E4%BC%98%E5%8C%96%EF%BC%88%E7%BA%A6-4%EF%BD%9E5-%E5%88%86%E9%92%9F%EF%BC%89"><span class="toc-number">1.3.</span> <span class="toc-text">三、性能与稳定性优化（约 4～5 分钟）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-%E5%8A%A0%E8%BD%BD%E8%B7%AF%E5%BE%84%EF%BC%9A%E8%B7%AF%E7%94%B1%E6%87%92%E5%8A%A0%E8%BD%BD%E4%B8%8E%E9%A1%B5%E9%9D%A2%E7%BC%93%E5%AD%98"><span class="toc-number">1.3.1.</span> <span class="toc-text">3.1 加载路径：路由懒加载与页面缓存</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-%E8%AF%B7%E6%B1%82%E5%B1%82%EF%BC%88axios%EF%BC%89%EF%BC%9A%E7%A8%B3%E9%93%BE%E8%B7%AF%E3%80%81%E5%B0%91%E8%AF%AF%E5%88%A4%E3%80%81%E5%8F%AF%E6%8E%A7%E9%87%8D%E8%AF%95"><span class="toc-number">1.3.2.</span> <span class="toc-text">3.2 请求层（axios）：稳链路、少误判、可控重试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-API-%E5%B1%82%EF%BC%9A%E7%9F%AD-TTL-%E7%BC%93%E5%AD%98%E4%B8%8E%E5%B9%B6%E5%8F%91%E5%8E%BB%E9%87%8D%EF%BC%88%E5%89%8A%E5%B3%B0%EF%BC%89"><span class="toc-number">1.3.3.</span> <span class="toc-text">3.3 API 层：短 TTL 缓存与并发去重（削峰）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-%E9%A1%B5%E9%9D%A2%E5%B1%82%EF%BC%9A%E5%8F%96%E6%B6%88%E7%AB%9E%E6%80%81%E3%80%81%E9%98%B2%E8%BF%9E%E7%82%B9%E3%80%81%E5%8F%AF%E6%84%9F%E7%9F%A5%E6%80%A7%E8%83%BD"><span class="toc-number">1.3.4.</span> <span class="toc-text">3.4 页面层：取消竞态、防连点、可感知性能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-5-%E6%9E%84%E5%BB%BA%E4%B8%8E%E4%BB%A3%E7%90%86%E5%B1%82%EF%BC%88Vue3-UP%EF%BC%89"><span class="toc-number">1.3.5.</span> <span class="toc-text">3.5 构建与代理层（Vue3-UP）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-6-%E6%A1%8C%E9%9D%A2-Web-%E7%AB%AF%E8%A1%A5%E5%85%85%EF%BC%88Web-UP%EF%BC%89"><span class="toc-number">1.3.6.</span> <span class="toc-text">3.6 桌面 Web 端补充（Web-UP）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E4%BC%98%E5%8C%96%E5%89%8D%E5%90%8E%E5%AF%B9%E7%85%A7%E4%B8%8E%E9%AA%8C%E6%94%B6%E8%A1%A8%E8%BF%B0%EF%BC%88%E7%BA%A6-1-%E5%88%86%E9%92%9F%EF%BC%89"><span class="toc-number">1.4.</span> <span class="toc-text">四、优化前后对照与验收表述（约 1 分钟）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E6%BC%94%E7%A4%BA%E8%AF%B4%E6%98%8E%EF%BC%88%E7%BA%A6-30-%E7%A7%92%EF%BC%8C%E5%8F%AF%E9%80%89%EF%BC%89"><span class="toc-number">1.5.</span> <span class="toc-text">五、演示说明（约 30 秒，可选）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E7%BB%93%E6%9D%9F%E8%AF%AD%EF%BC%88%E7%BA%A6-30-%E7%A7%92%EF%BC%89"><span class="toc-number">1.6.</span> <span class="toc-text">六、结束语（约 30 秒）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%83%E3%80%81%E5%88%9B%E6%96%B0%E7%82%B9%EF%BC%88%E5%8F%AF%E5%8D%95%E7%8B%AC%E6%B1%87%E6%8A%A5-1-%E5%88%86%E9%92%9F%EF%BC%89"><span class="toc-number">1.7.</span> <span class="toc-text">七、创新点（可单独汇报 1 分钟）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#7-1-%E6%9C%AC%E8%AF%BE%E9%A2%98%E5%88%9B%E6%96%B0%E7%82%B9%EF%BC%88%E7%B3%BB%E7%BB%9F%E5%BC%80%E5%8F%91%E7%B1%BB%E5%8F%A3%E5%BE%84%EF%BC%89"><span class="toc-number">1.7.1.</span> <span class="toc-text">7.1 本课题创新点（系统开发类口径）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-2-%E4%B8%80%E5%8F%A5%E8%AF%9D%E5%88%9B%E6%96%B0%E6%80%BB%E7%BB%93%EF%BC%88%E7%AD%94%E8%BE%A9%E5%8F%AF%E7%9B%B4%E6%8E%A5%E8%AF%B4%EF%BC%89"><span class="toc-number">1.7.2.</span> <span class="toc-text">7.2 一句话创新总结（答辩可直接说）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%99%84%E5%BD%95%EF%BC%9A%E5%8F%AF%E8%83%BD%E7%9A%84%E8%BF%BD%E9%97%AE%E4%B8%8E%E7%9F%AD%E7%AD%94%EF%BC%88%E5%A4%87%E6%9F%A5%EF%BC%89"><span class="toc-number">1.8.</span> <span class="toc-text">附录：可能的追问与短答（备查）</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2026/03/30/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" title="学习笔记"><img src="/img/top/txttop12.png" onerror="this.onerror=null;this.src='/img/404.png'" alt="学习笔记"/></a><div class="content"><a class="title" href="/2026/03/30/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" title="学习笔记">学习笔记</a><time datetime="2026-03-30T01:04:02.000Z" title="发表于 2026-03-30 09:04:02">2026-03-30</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/03/23/%E6%AF%95%E8%AE%BE%E6%A8%A1%E5%9D%97%E5%8C%96%E4%B8%8E%E7%BB%84%E4%BB%B6%E5%8C%96%E5%AE%9E%E7%8E%B0%E8%AF%B4%E6%98%8E/" title="毕设模块化与组件化实现说明"><img src="/img/top/txttop13.png" onerror="this.onerror=null;this.src='/img/404.png'" alt="毕设模块化与组件化实现说明"/></a><div class="content"><a class="title" href="/2026/03/23/%E6%AF%95%E8%AE%BE%E6%A8%A1%E5%9D%97%E5%8C%96%E4%B8%8E%E7%BB%84%E4%BB%B6%E5%8C%96%E5%AE%9E%E7%8E%B0%E8%AF%B4%E6%98%8E/" title="毕设模块化与组件化实现说明">毕设模块化与组件化实现说明</a><time datetime="2026-03-23T07:09:00.000Z" title="发表于 2026-03-23 15:09:00">2026-03-23</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/03/23/%E6%AF%95%E8%AE%BE-%E7%B3%BB%E7%BB%9F%E9%AA%8C%E6%94%B6%E8%AE%B2%E7%A8%BF-%E5%B7%A5%E7%A8%8B%E5%8C%96%E4%B8%8E%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" title="毕设模块化与组件化实现说明"><img src="/img/top/txttop13.png" onerror="this.onerror=null;this.src='/img/404.png'" alt="毕设模块化与组件化实现说明"/></a><div class="content"><a class="title" href="/2026/03/23/%E6%AF%95%E8%AE%BE-%E7%B3%BB%E7%BB%9F%E9%AA%8C%E6%94%B6%E8%AE%B2%E7%A8%BF-%E5%B7%A5%E7%A8%8B%E5%8C%96%E4%B8%8E%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" title="毕设模块化与组件化实现说明">毕设模块化与组件化实现说明</a><time datetime="2026-03-23T07:09:00.000Z" title="发表于 2026-03-23 15:09:00">2026-03-23</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/03/02/%E5%AE%9E%E4%B9%A0%E6%97%A5%E5%BF%97/" title="实习了bro"><img src="/img/top/txttop11.jpg" onerror="this.onerror=null;this.src='/img/404.png'" alt="实习了bro"/></a><div class="content"><a class="title" href="/2026/03/02/%E5%AE%9E%E4%B9%A0%E6%97%A5%E5%BF%97/" title="实习了bro">实习了bro</a><time datetime="2026-03-02T01:35:00.000Z" title="发表于 2026-03-02 09:35:00">2026-03-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/10/02/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8E%9F%E7%90%86%E5%AD%A6%E4%B9%A0/" title="浏览器原理学习"><img src="/img/top/txttop10.jpg" onerror="this.onerror=null;this.src='/img/404.png'" alt="浏览器原理学习"/></a><div class="content"><a class="title" href="/2025/10/02/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8E%9F%E7%90%86%E5%AD%A6%E4%B9%A0/" title="浏览器原理学习">浏览器原理学习</a><time datetime="2025-10-02T06:00:00.000Z" title="发表于 2025-10-02 14:00:00">2025-10-02</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2026 By Jofwaren</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"></div><script src="https://kit.fontawesome.com/01bb7be89b.js"></script><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-show-text.min.js" data-mobile="false" data-text="hey,今天过得好嘛,有什么好玩的嘛,:),嘿嘿,哈欠~,困=.=,不如去睡觉吧~,好吧好吧,Have a nice day~,好大的太阳,出去走走" data-fontsize="15px" data-random="false" async="async"></script></div></body></html>
